@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.school.persisted.TimetableSchedule" table="timetable_schedule"
+		catalog="school">
+		<id name="id" type="long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="code" type="string">
+			<column name="code" length="50" not-null="true" />
+		</property>
+		<bag name="classes" table="class" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="ts_id" />
+			</key>
+			<one-to-many class="org.school.persisted.Class" />
+		</bag>
+		<bag name="exams" table="exam" inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="ts_id" />
+			</key>
+			<one-to-many class="org.school.persisted.Exam" />
+		</bag>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.school.persisted.Exam" table="exam" catalog="school">
+		<id name="id" type="long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="code" type="string">
+			<column name="code" length="50" not-null="true" />
+		</property>
+		<property name="ts_id" type="long">
+			<column name="ts_id" not-null="true" />
+		</property>
+		<property name="startTime" type="timestamp">
+			<column name="start_time" not-null="true" />
+		</property>
+		<property name="endTime" type="timestamp">
+			<column name="end_time" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>
