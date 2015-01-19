@@ -46,6 +46,6 @@ div.title-dialog{
 	z-index: 99999;
 }
 
-table{
-	border: 1px solid black;
+.current-row{
+	background: yellow;
 }

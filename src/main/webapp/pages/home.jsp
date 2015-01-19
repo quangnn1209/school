@@ -8,7 +8,10 @@
 $(document).ready(function() {
 });
 
-function loadItems(items, tsId){
+function loadItems(items, tsId, me){
+	$(me).parents("table:first").find("tr").removeClass("current-row");
+	$(me).parents("tr:first").addClass("current-row");
+	
 	$('#calendar').fullCalendar('destroy');
 	$('#calendar').fullCalendar({
 		header: {
@@ -44,7 +47,7 @@ function loadItems(items, tsId){
 </script>
 
 <body>
-<table>
+<table class="table table-hover">
 	<c:forEach items="${tsList}" var="ts">
 		<script type="text/javascript">
 			var items${ts.id} = [];
@@ -57,7 +60,7 @@ function loadItems(items, tsId){
 		</script>
 		<tr>
 			<th>${ts.code}</th>
-			<td><button type="button" class="load-item-btn" onclick="loadItems(items${ts.id}, ${ts.id})">Load this item</button></td>
+			<td><button type="button" class="load-item-btn btn btn-default" onclick="loadItems(items${ts.id}, ${ts.id}, this)">Load this item</button></td>
 		</tr>
 	</c:forEach>
 </table>

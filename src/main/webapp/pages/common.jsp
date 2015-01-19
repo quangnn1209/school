@@ -7,6 +7,7 @@
 <title>School</title>
 <link rel='stylesheet' href='./css/fullcalendar.css' />
 <link rel='stylesheet' href='./css/style.css' />
+<link rel='stylesheet' href='./css/bootstrap.css' />
 
 <script type="text/javascript"
 	src="./javascript/lib/jquery-1.11.1.min.js"></script>
@@ -52,4 +53,8 @@
 	}
 </script>
 </head>
+<ul class="nav nav-pills" role="tablist">
+	<li role="presentation" class="active"><a href="#">Timetable Schedule</a></li>
+	<li role="presentation" class="active"><a href="#">User</a></li>
+</ul>
 </html>

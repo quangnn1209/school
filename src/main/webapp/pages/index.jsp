@@ -4,9 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
-<form action="UserServlet" method="post">
+<form action="UserServlet" method="post" class="form-inline">
 	<input type="hidden" name="action" value="login"/>
-	<table>
+	<table  class="table table-hover">
 		<tr>
 			<th colspan="2">Sign in form</th>
 		</tr>
@@ -19,14 +19,14 @@
 			<td> <input type="password" maxlength="50" name="password"/> </td>
 		</tr>
 		<tr>
-			<td colspan="2"> <button>Login</button> </td>
+			<td colspan="2"> <button class="btn btn-default">Login</button> </td>
 		</tr>
 	</table>
 </form>
 
-<form action="UserServlet" method="post">
+<form action="UserServlet" method="post" class="form-inline">
 	<input type="hidden" name="action" value="signup"/>
-	<table>
+	<table class="table table-hover">
 		<tr>
 			<th colspan="4">Sign up form</th>
 		</tr>
@@ -43,7 +43,7 @@
 			<td> <input type="password" maxlength="50" name="password"/> </td>
 		</tr>
 		<tr>
-			<td colspan="4"> <button>Save</button> </td>
+			<td colspan="4"> <button class="btn btn-default">Save</button> </td>
 		</tr>
 	</table>
 </form>
