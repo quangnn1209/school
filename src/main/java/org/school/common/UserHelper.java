@@ -14,6 +14,24 @@ import org.school.hibernate.HibernateUtility;
 import org.school.persisted.User;
 
 public class UserHelper {
+	public static User getPersistantObject(User user) {
+		Session hibernateSession = null;
+		Transaction transaction = null;
+		try {
+			hibernateSession = HibernateUtility.getSessionFactory().openSession();
+			transaction = hibernateSession.beginTransaction();
+			user = (User) hibernateSession.get(User.class, user.getId());
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null)
+				transaction.rollback();
+			System.out.println("object not saved  - " + e.getMessage());
+		} finally {
+			hibernateSession.close();
+		}
+		return user;
+	}
+
 	public static User doLogin(User user) {
 		Session hibernateSession = null;
 		Transaction transaction = null;
@@ -67,6 +85,24 @@ public class UserHelper {
 			System.err.println(he.getMessage());
 		}
 		return objectList;
+	}
+
+	public static void delete(User user) {
+		Session hibernateSession = null;
+		Transaction transaction = null;
+		try {
+			hibernateSession = HibernateUtility.getSessionFactory().openSession();
+			transaction = hibernateSession.beginTransaction();
+			user = (User) hibernateSession.createCriteria(User.class).add(Restrictions.eq("id", user.getId())).uniqueResult();
+			hibernateSession.delete(user);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null)
+				transaction.rollback();
+			System.out.println("Could not delete node - " + e.getMessage());
+		} finally {
+			hibernateSession.close();
+		}
 	}
 
 	public static String md5(String input) {

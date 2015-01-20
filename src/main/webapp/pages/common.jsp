@@ -9,6 +9,7 @@
 <link rel='stylesheet' href='./css/fullcalendar.css' />
 <link rel='stylesheet' href='./css/style.css' />
 <link rel='stylesheet' href='./css/bootstrap.css' />
+<link rel='stylesheet' href='./css/jquery-ui.css' />
 
 <script type="text/javascript"
 	src="./javascript/lib/jquery-1.11.1.min.js"></script>
@@ -18,8 +19,8 @@
 <script type="text/javascript">
 	function openDialog(element, start, end, tsId) {
 		element.dialog({
-			height : 100,
-			width : 200,
+			height : 200,
+			width : 400,
 			modal : true,
 			buttons : {
 				"Save" : function() {

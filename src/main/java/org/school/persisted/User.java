@@ -18,10 +18,24 @@ public class User implements java.io.Serializable {
 		this.email = email;
 	}
 
+	public User(long id) {
+		super();
+		this.id = id;
+	}
+
 	public User(String name, String password, int role, String code, String email) {
 		super();
 		this.name = name;
 		this.password = password;
+		this.role = role;
+		this.code = code;
+		this.email = email;
+	}
+
+	public User(long id, String name, int role, String code, String email) {
+		super();
+		this.id = id;
+		this.name = name;
 		this.role = role;
 		this.code = code;
 		this.email = email;

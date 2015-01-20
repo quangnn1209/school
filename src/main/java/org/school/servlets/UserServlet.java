@@ -53,6 +53,10 @@ public class UserServlet extends HttpServlet {
 			login();
 		} else if ("signup".equals(request.getParameter("action"))) {
 			signUp();
+		} else if ("update".equals(request.getParameter("action"))) {
+			update();
+		} else if ("delete".equals(request.getParameter("action"))) {
+			delete();
 		} else {
 			if (session.getAttribute("user") == null) {
 				ActionHelper.redirectToAction(response, "AuthenticationServlet");
@@ -60,6 +64,19 @@ public class UserServlet extends HttpServlet {
 			}
 			list();
 		}
+	}
+
+	private void delete() {
+		User user = new User(Long.parseLong(request.getParameter("id")));
+		UserHelper.delete(user);
+	}
+
+	private void update() {
+		User user = new User(Long.parseLong(request.getParameter("id")), request.getParameter("name"), Integer.parseInt(request.getParameter("role")),
+				request.getParameter("code"), request.getParameter("email"));
+		User dbUser = UserHelper.getPersistantObject(user);
+		user.setPassword(dbUser.getPassword());
+		UserHelper.saveOrUpdate(user);
 	}
 
 	private void signUp() {

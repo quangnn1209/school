@@ -7,6 +7,38 @@
 <script type="text/javascript">
 $(document).ready(function() {
 });
+
+function editRow(me){
+	var row = $("<div>"+$(me).parents("tr:first").find("div:first").html()+"</div>");
+	row.dialog({
+		height : 300,
+		width : 400,
+		modal : true,
+		buttons : {
+			"Save" : function() {
+				$.ajax({
+					type : "POST",
+					url : "UserServlet?action=update&id=" + row.find("input:hidden").val()+"&name="+row.find("[name=name]").val()+"&code="+row.find("[name=code]").val()+"&email="+row.find("[name=email]").val()+"&role="+row.find("[name=role]").val()
+				}).done(function(){
+					location.reload();	
+				});				
+			}
+		},
+		close : function() {
+			$(this).dialog("destroy");
+		}
+	});
+}
+
+function deleteRow(me){
+	if(confirm("Do you want to delete this user?")){
+		$.ajax({
+			type : "POST",
+			url : "UserServlet?action=delete&id=" + row.find("input:hidden").val()
+		});
+		$(me).parents("tr:first").remove();
+	}
+}
 </script>
 <body>
 <table class="table table-hover">
@@ -20,6 +52,23 @@ $(document).ready(function() {
 			<td>${user.email}</td>
 			<th>Role</th>
 			<td>${user.role}</td>
+			<td><button type="button" onclick="editRow(this)">Edit</button></td>
+			<td><button type="button" onclick="deleteRow(this)">Delete</button></td>
+			<td>
+				<div style="display: none;">
+					<input type="hidden" value="${user.id}" name="id"/>
+					<div>Name<input type="text" name="name" value="${user.name}"/></div>
+					<div>Code<input type="text" name="code" value="${user.code}"/></div>
+					<div>Email<input type="text" name="email" value="${user.email}"/></div>
+					<div>Role
+						<select name="role">
+							<option value="0">Student</option>
+							<option value="2">Teacher</option>
+							<option value="1">Admin</option>
+						</select>
+					</div>
+				</div>
+			</td>
 		</tr>
 	</c:forEach>
 </table>

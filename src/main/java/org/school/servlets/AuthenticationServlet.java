@@ -47,9 +47,8 @@ public class AuthenticationServlet extends HttpServlet {
 	private void logout() {
 		session.removeAttribute("user");
 		response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-		response.setHeader("Location", "pages/index.jsp");
 		try {
-			response.sendRedirect("pages/index.jsp");
+			response.sendRedirect("/School");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
