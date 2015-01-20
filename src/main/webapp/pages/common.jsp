@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,8 +54,12 @@
 	}
 </script>
 </head>
-<ul class="nav nav-pills" role="tablist">
-	<li role="presentation" class="active"><a href="#">Timetable Schedule</a></li>
-	<li role="presentation" class="active"><a href="#">User</a></li>
-</ul>
+<c:if test="${not empty sessionScope.user}">
+	<ul class="nav nav-pills" role="tablist">
+		<li role="presentation" class="active"><a href="TimetableScheduleServlet">Timetable Schedule${sessionScope.user.role}</a></li>
+		<c:if test="${sessionScope.user.role eq 1}">
+			<li role="presentation" class="active"><a href="UserServlet">User</a></li>
+		</c:if>
+	</ul>
+</c:if>
 </html>

@@ -49,6 +49,11 @@ public class TimetableScheduleServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession();
+		if (session.getAttribute("user") == null) {
+			ActionHelper.redirectToAction(response, "AuthenticationServlet");
+			return;
+		}
+
 		this.request = request;
 		this.response = response;
 

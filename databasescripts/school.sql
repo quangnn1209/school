@@ -10,12 +10,14 @@ Target Server Type    : MYSQL
 Target Server Version : 50619
 File Encoding         : 65001
 
-Date: 2015-01-20 00:41:47
+Date: 2015-01-20 10:59:12
 */
 
-SET FOREIGN_KEY_CHECKS=0;
 DROP DATABASE IF EXISTS `school`;
 CREATE DATABASE `school`;
+USE `school`;
+
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
 -- Table structure for class
@@ -91,6 +93,5 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'quang', '0', 'cde', 'altimario@openprj.it', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO `user` VALUES ('2', 'quang2', '0', 'code2', 'quang', '2b10351253eed030812674e8aa18a5ab');
-INSERT INTO `user` VALUES ('3', '', '0', '', 'altimario@openprj.it', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO `user` VALUES ('1', 'quang', '1', 'cde', 'altimario@openprj.it', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO `user` VALUES ('2', 'quang2', '1', 'code2', 'quang', '2b10351253eed030812674e8aa18a5ab');

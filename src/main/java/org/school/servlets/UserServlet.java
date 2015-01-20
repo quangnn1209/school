@@ -45,6 +45,7 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession();
+
 		this.request = request;
 		this.response = response;
 
@@ -52,6 +53,12 @@ public class UserServlet extends HttpServlet {
 			login();
 		} else if ("signup".equals(request.getParameter("action"))) {
 			signUp();
+		} else {
+			if (session.getAttribute("user") == null) {
+				ActionHelper.redirectToAction(response, "AuthenticationServlet");
+				return;
+			}
+			list();
 		}
 	}
 
@@ -74,5 +81,10 @@ public class UserServlet extends HttpServlet {
 		} else {
 			ActionHelper.forwardToPage(requestDispatcher, request, response, "index.jsp");
 		}
+	}
+
+	private void list() {
+		request.setAttribute("userList", UserHelper.getAllUsers());
+		ActionHelper.forwardToPage(requestDispatcher, request, response, "user.jsp");
 	}
 }

@@ -9,17 +9,6 @@
 	</welcome-file-list>
 	<servlet>
 		<description></description>
-		<display-name>Controller</display-name>
-		<servlet-name>Controller</servlet-name>
-		<servlet-class>org.school.servlets.Controller</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Controller</servlet-name>
-		<url-pattern>/Controller</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description></description>
 		<display-name>UserServlet</display-name>
 		<servlet-name>UserServlet</servlet-name>
 		<servlet-class>org.school.servlets.UserServlet</servlet-class>
@@ -38,5 +27,16 @@
 	<servlet-mapping>
 		<servlet-name>TimetableScheduleServlet</servlet-name>
 		<url-pattern>/TimetableScheduleServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>AuthenticationServlet</display-name>
+		<servlet-name>AuthenticationServlet</servlet-name>
+		<servlet-class>org.school.servlets.AuthenticationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthenticationServlet</servlet-name>
+		<url-pattern>/AuthenticationServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -6,7 +6,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -60,15 +59,14 @@ public class UserHelper {
 		try {
 			hibernateSession = HibernateUtility.getSessionFactory().openSession();
 			transaction = hibernateSession.beginTransaction();
-			Criteria criteria = hibernateSession.createCriteria(User.class);
-			objectList = criteria.list();
+			objectList = hibernateSession.createCriteria(User.class).list();
 			transaction.commit();
 		} catch (HibernateException he) {
 			if (transaction != null)
 				transaction.rollback();
 			System.err.println(he.getMessage());
 		}
-		return (List<User>) objectList;
+		return objectList;
 	}
 
 	public static String md5(String input) {
